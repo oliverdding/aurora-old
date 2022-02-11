@@ -1,4 +1,4 @@
-base_url = "https://charmer.fun"
+base_url = "https://charmer.netlify.app"
 title = "Aurora"
 description = "Sidere mens eadem mutato"
 default_language = "zh"
