@@ -16,10 +16,19 @@ jobs:
         with:
           submodules: true
 
-      - name: 'Build and deploy'
+      - name: Build Static Website
         uses: shalzz/zola-deploy-action@master
         env:
-          PAGES_BRANCH: main
-          REPOSITORY: oliverdding/oliverdding.github.io
+          BUILD_ONLY: true
           BUILD_DIR: .
-          GITHUB_TOKEN: ${{ secrets.ZOLA }}
+
+      - name: Deploy Static Website
+        uses: peaceiris/actions-gh-pages@v3
+        with: 
+         deploy_key: ${{ secrets.ZOLA }}
+         external_repository: oliverdding/oliverdding.github.io
+         publish_branch: main
+         publish_dir: ./public
+         user_name: 'github-actions[bot]'
+         user_email: 'github-actions[bot]@users.noreply.github.com'
+         full_commit_message: ${{ github.event.head_commit.message }}
