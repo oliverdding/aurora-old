@@ -1,0 +1,125 @@
+base_url = "https://oliverdding.github.io"
+title = "Aurora"
+description = "Sidere mens eadem mutato"
+default_language = "zh"
+theme = "DeepThought"
+
+output_dir = "public"
+
+compile_sass = true
+
+minify_html = false
+
+ignored_content = ["*.{graphml,xlsx}", "temp.*"]
+
+generate_feed = true
+
+# ["atom.xml", "rss.xml"]
+feed_filename = "rss.xml"
+
+feed_limit = 20
+
+hard_link_static = false
+
+taxonomies = [
+    { name = "categories", feed = true, paginate_by = 10 },
+    { name = "tags", fees = true, paginate_by = 10 },
+]
+
+build_search_index = false # wait for zola
+
+[markdown]
+highlight_code = true
+
+# A list of directories used to search for additional `.sublime-syntax` files.
+extra_syntaxes = []
+
+highlight_theme = "gruvbox-dark"
+
+render_emoji = true
+
+external_links_target_blank = true
+
+external_links_no_follow = true
+
+external_links_no_referrer = true
+
+smart_punctuation = true
+
+[link_checker]
+skip_prefixes = [
+    "http://[2001:db8::]/",
+]
+
+skip_anchor_prefixes = [
+    "https://caniuse.com/",
+]
+
+# Various slugification strategies, see below for details
+# Defaults to everything being a slug
+[slugify]
+paths = "on"
+taxonomies = "on"
+anchors = "on"
+
+# [search]
+# include_title = true
+# include_description = false
+# include_path = false
+# include_content = true
+# truncate_content_length = 100
+
+[extra]
+katex.enabled = true
+katex.auto_render = true
+
+chart.enabled = true
+mermaid.enabled = true
+galleria.enabled = true
+
+navbar_items = [
+ { code = "zh", nav_items = [
+  { url = "$BASE_URL/", name = "Home" },
+  { url = "$BASE_URL/posts", name = "Posts" },
+  { url = "$BASE_URL/categories", name = "Categories" },
+  { url = "$BASE_URL/tags", name = "Tags" },
+ ]},
+]
+
+[extra.favicon]
+favicon_16x16 = "/icons/favicon-16x16.png"
+favicon_32x32 = "/icons/favicon-32x32.png"
+apple_touch_icon = "/icons/apple-touch-icon.png"
+safari_pinned_tab = "/icons/safari-pinned-tab.svg"
+webmanifest = "/icons/site.webmanifest"
+
+[extra.author]
+name = "charmer"
+avatar = "/images/charmer.svg"
+
+[extra.social]
+email = "oliverdding@outlook.com"
+# facebook = "<facebook_username>"
+github = "oliverdding"
+# gitlab = "<gitlab_username>"
+# keybase = "<keybase_username>"
+# linkedin = "<linkedin_username>"
+# stackoverflow = "<stackoverflow_userid>"
+twitter = "oliverdding"
+# instagram = "<instagram_usernaem>"
+# behance = "<behance_username>"
+# google_scholar = "<googlescholar_userid>"
+# orcid = "<orcid_userid>"
+# mastodon = "<mastadon_username>"
+
+[extra.analytics]
+google = "G-J661LYF5TY"
+
+# To add disqus comments
+[extra.commenting]
+disqus = "oliverdding"
+
+# To enable mapbox maps
+[extra.mapbox]
+enabled = false
+access_token = "<your_access_token>"
