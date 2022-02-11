@@ -22,4 +22,4 @@ jobs:
           PAGES_BRANCH: main
           REPOSITORY: oliverdding/oliverdding.github.io
           BUILD_DIR: .
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ZOLA }}
