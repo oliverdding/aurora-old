@@ -19,13 +19,13 @@ comments = true
 1. 运行用户的main函数
 2. 在集群上执行一些并行操作
 
-```mermaid
+{% mermaid() %}
 graph TD;
   subgraph spark application;
   core[driver program] -.职责1.-> act1(run user's main function);
   core[driver program] -.职责2.-> act2(execute various parallel operations);
   end
-```
+{% end %}
 
 同样，spark提供了两层抽象:
 

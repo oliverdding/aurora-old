@@ -27,7 +27,7 @@ comments = true
     4. （可选）支持admonition
 4. 我极其讨厌复杂庞大的可选项（没错，我也讨厌kde），所以配置文件越精简越好。
 
-在hugo中，我从Loveit（似乎停止维护了）搬迁到papermod（非常惊艳，但是公式渲染需要html代码配置，并且渲染异常），再尝试了stack（太花哨）、terminal（风格不喜）、MemE（配置项过于庞大），我逃离到了zola。再一番抉择后发现了现在正在使用的主题[DeepThought](https://github.com/RatanShreshtha/DeepThought)。zola中几乎最流行的定制，界面简洁优美，配置精简，原生支持渲染，toc可选，支持评论，唯一的缺点就是缺少中文搜索的支持，因为打包出来的体积太大了。
+在hugo中，我从Loveit（似乎停止维护了）搬迁到papermod（非常惊艳，但是公式渲染需要html代码配置，并且渲染异常），再尝试了stack（太花哨）、terminal（风格不喜）、MemE（配置项过于庞大），我逃离到了zola。再一番抉择后发现了现在正在使用的主题[DeepThought](https://github.com/RatanShreshtha/DeepThought)，它是zola中几乎最流行的主题，界面简洁优美，配置精简，原生支持渲染，toc可选，支持评论，唯一的缺点就是缺少中文搜索的支持。
 
 
 ## 博客源文本存储
