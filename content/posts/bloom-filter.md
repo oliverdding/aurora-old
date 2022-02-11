@@ -33,7 +33,7 @@ comments = true
 
 此时将`bitmap`中对应的位置1。
 
-![布隆过滤器插入新key示意图](/images/布隆过滤器插入新key.drawio.svg)
+![往布隆过滤器插入新key](https://raw.githubusercontent.com/oliverdding/imaw.io/main/inserting-key-into-bloom-filter.drawio.svg)
 
 当key越来越多，`bitmap`中为1的位越多，对于某个不存在的key，k个hash函数得到的坐标都为1的可能越大，此时就发生false positive。
 
