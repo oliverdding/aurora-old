@@ -12,12 +12,20 @@ toc = true
 comments = true
 +++
 
-布隆过滤器（Bloom Filter）是一种类似于哈希表的数据结构，但相比于后者空间利用率更高。
+## 介绍
+
+布隆过滤器（Bloom Filter）是一种类似于哈希表的数据结构，用于查询成员存在与否，相比于后者，它允许存在false positive值，但显著地降低了内存占用。
 
 使用布隆过滤器查找key时，返回值可能情况有两种：
 
 1. key**不**存在
-2. key**可能**存在
+2. key**可能**存在（存在、纳伪）
+
+## 历史
+
+布隆过滤器于1970年代被Burton Bloom创造，在查询集合成员存在与否时一般考虑时间成本或空间成本，论文提出第三个优化方向：Allowable Fraction of Errors，也就是说允许一定的误判，来大幅降低空间占用[1]。之后一段时间布隆过滤器被广泛运用在数据库领域，
+
+之后又有人提出利用布隆过滤器+共享缓存的方式大幅降低缓存服务器的带宽[2]，于是布隆过滤器在互联网中展现实力 :collision: 。
 
 ## 原理
 
@@ -49,7 +57,7 @@ comments = true
 
 由于有自然对数e的计算公式$$\lim_{n \to \infty}{(1-\frac{1}{x})^{-x}}=e$$
 
-我们可以近似计算$P''(0)$得到$$P''(0)=(1-\frac{1}{m})^{kn}\approx{}e^{-\frac{kn}{m}}$$
+我们可以**近似**计算$P''(0)$得到$$P''(0)=(1-\frac{1}{m})^{kn}\approx{}e^{-\frac{kn}{m}}$$
 
 因此，对于任意一个位，其被置1的概率是$$P''(1)=1-P''(0)\approx{}1-e^{-\frac{kn}{m}}$$
 
@@ -66,3 +74,8 @@ comments = true
 得知当$p=\frac{1}{2}$时g取得最小，此时有$$k=ln(2\frac{m}{n})$$
 
 插入回$$f=(1-p)^{k}$$得到alse positive的最小值为$$f_{min}=(\frac{1}{2})^{k}\approx{}(0.6185)^{\frac{m}{n}}$$
+
+## 参考
+
+- [1]: Space/Time Trade-offs in Hash Coding with Allowable Errors
+- [2]: Summary Cache: A Scalable Wide-Area Web Cache Sharing Protocol 

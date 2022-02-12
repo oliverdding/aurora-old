@@ -95,3 +95,7 @@ jobs:
 ```
 
 shalzz/zola-deploy-action也可以直接推送，但是我想K.I.S.S些，就职责分离了。hexo、hugo大体相同，只要改动第二部build即可。
+
+## 扩展
+
+当然，也可以选择第三方发布平台部署静态网站，比如比较出名的[netify](netlify.com)和[vercel](vercel.com)，此时只需要源码仓库即可编译发布静态博客。
