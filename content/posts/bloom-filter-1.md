@@ -4,8 +4,8 @@ description="最普通的布隆过滤器，涉及结构解释和数学推导"
 date=2022-02-09T17:13:10+08:00
 
 [taxonomies]
-categories = ["BloomFilter"]
-tags = ["big data", "data structure"]
+categories = ["ProbabilisticDataStructure", "BloomFilter"]
+tags = ["data structure"]
 
 [extra]
 toc = true
@@ -14,7 +14,7 @@ comments = true
 
 ## 基础
 
-布隆过滤器（Bloom Filter）用于判断某个元素是否在集合中的一个简单、高效、内存占用低的数据结构，它类似于哈希表，相比于后者，它存在false positive值，但显著地降低了内存占用。这种思想值得体会，以退为进，*只要false positive控制在可以允许的范围*，资源消耗被大幅降低[4]。
+布隆过滤器（Bloom Filter）用于判断某个元素是否在集合中的一个简单、高效、内存占用低的数据结构，它类似于哈希表，相比于后者，它存在false positive值，但显著地降低了内存占用。这种[概率性数据结构](/categories/probabilisticdatastructure/)值得体会，以退为进，*只要false positive控制在可以允许的范围*，资源消耗被大幅降低[4]。
 
 使用布隆过滤器查找key时，返回值可能情况有两种：
 
