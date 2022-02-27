@@ -10,7 +10,7 @@ Welcome to my blog named [Aurora](/). You can call me **charmer**, and everythin
 - :yum:  I'm a software engineer interested in [Linux](/tags/linux/)(btw I use Arch :satisfied: ), [Functional Programming](/tags/functional-programming/) and [Neovim](/tags/neovim/)
 - :computer:  I use Scala and Go for works, C and Rust for open source project
 - :saxophone:  Saxophone is my favorite instrument, thought I don't play it
-- :notes:  I enjoy classic music and synthwave
+- :notes:  I enjoy vaporwave and synthwave
 
 now enjoy yourself here :raised_hands:
 
