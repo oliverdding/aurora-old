@@ -5,7 +5,7 @@ date = 2021-11-18T10:59:50+08:00
 
 
 [taxonomies]
-categories = ["DataStructures"]
+categories = []
 tags = ["big data", "apache", "data structure"]
 
 [extra]

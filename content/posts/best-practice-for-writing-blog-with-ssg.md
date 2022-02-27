@@ -4,7 +4,7 @@ description="SSG+Github存储源码+Github Action自动编译+Github Pages发布
 date=2022-02-11T20:37:06+08:00
 
 [taxonomies]
-categories = ["BestPractices"]
+categories = []
 tags = ["best practice", "tip"]
 
 [extra]
