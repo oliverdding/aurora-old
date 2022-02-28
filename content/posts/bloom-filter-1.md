@@ -12,7 +12,7 @@ toc = true
 comments = true
 +++
 
-## 基础
+## 介绍
 
 布隆过滤器（Bloom Filter）用于判断某个元素是否在集合中的一个简单、高效、内存占用低的数据结构，它类似于哈希表，相比于后者，它存在false positive值，但显著地降低了内存占用。这种[概率性数据结构](/categories/probabilisticdatastructure/)值得体会，以退为进，*只要false positive控制在可以允许的范围*，资源消耗被大幅降低[4]。
 
@@ -79,9 +79,9 @@ comments = true
 
 ![布隆过滤器加速查询](https://raw.githubusercontent.com/oliverdding/imaw.io/main/bloom-filter-speed-up-answers.drawio.svg)
 
-## 数学证明
+## 数学推导
 
-**那么k取何值时，false positive发生概率最小，此时概率为？**
+**k取何值时，false positive发生概率最小，此时概率为？**
 
 由于hash函数“选择”`bitmap`的位置是随机的，因此对于长度为m的`bitmap`而言，插入一个值时某个位被置1、0的概率分别是$P(1) = \frac{1}{m}$、$P(0) = 1 - \frac{1}{m}$
 
@@ -117,8 +117,15 @@ comments = true
 
 $n$由系统输入决定，$\varepsilon$则是开发者平衡内存使用和性能的选择，因此可以通过传入这两个变量自动计算剩下的值。
 
-1. 根据公式$$m=\lceil{}-\frac{nln(\varepsilon)}{(ln(2))^2}\rceil$$计算m的值
-2. 根据公式$$k=\lceil{}-log_2(\varepsilon)\rceil$$计算k的值
+1. 根据公式$m=\lceil{}-\frac{nln(\varepsilon)}{(ln(2))^2}\rceil$计算m的值
+2. 根据公式$k=\lceil{}-log_2(\varepsilon)\rceil$计算k的值
+
+## 缺陷
+
+基础bloom filter有着自己的局限性，因此出现了许多变种，它们为了特殊场景作出不同的定制，增加一定开销换取更多功能：
+
+* 无法删除元素：计数布隆过滤器
+* 无法扩展：[可扩展布隆过滤器](/posts/bloom-filter-2/)
 
 ## 参考
 
