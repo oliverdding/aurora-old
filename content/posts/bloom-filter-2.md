@@ -18,6 +18,8 @@ comments = true
 
 ## 布隆过滤器变体
 
+![布隆过滤器变体](https://raw.githubusercontent.com/oliverdding/imaw.io/main/variant_bloom_filter.drawio.svg)
+
 布隆过滤器变体由以下两部分构成：
 
 1. M位的位图：`bitmap`
