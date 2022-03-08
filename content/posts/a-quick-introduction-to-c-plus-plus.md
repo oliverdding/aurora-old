@@ -1,6 +1,6 @@
 +++
 title = "通过例子快速入门C++"
-description = "[原文链接](http://www.tfd.chalmers.se/~hani/kurser/OS_CFD_2007/c++.pdf)"
+description = "原文链接: http://www.tfd.chalmers.se/~hani/kurser/OS_CFD_2007/c++.pdf"
 date = 2022-03-07T14:37:06+08:00
 
 [taxonomies]
