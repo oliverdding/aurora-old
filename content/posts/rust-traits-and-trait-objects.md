@@ -74,7 +74,7 @@ get_runnable::<Dog>(Dog {});
 
 ### 动态分发
 
-首先引入trait对象(trait object)的概念：trait对象是指实现了某组traits的非具体类型值，这组trait一定包含一个[对象安全（object safe）](https://doc.rust-lang.org/reference/items/traits.html#object-safety)的基trait，和一些[自动trait（auto trait）](https://doc.rust-lang.org/reference/special-types-and-traits.html#auto-traits)。
+首先引入[trait对象(trait object)](https://doc.rust-lang.org/reference/types/trait-object.html)的概念：trait对象是指实现了某组traits的非具体类型值，这组trait一定包含一个[对象安全（object safe）](https://doc.rust-lang.org/reference/items/traits.html#object-safety)的基trait，和一些[自动trait（auto trait）](https://doc.rust-lang.org/reference/special-types-and-traits.html#auto-traits)。
 
 在2021版本后，要求trait对象一定需要`dyn`关键字标识，以和trait本身区分开来。对于某个trait`Trait`，以下东西都是trait对象：
 
