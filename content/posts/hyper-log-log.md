@@ -14,6 +14,10 @@ comments = true
 
 基数统计问题（*Count-distinct problem*）是指在具有重复元素的数据流中找到不同元素的数目的，该问题有许多场景，比如统计通过某个路由器的ip数量、统计访问某网站的用户数以及数据库总某一字段的基数。
 
+可以先看这个视频对本文有直观的认识
+
+{{ youtube(id="jD2d7jr7z1Q") }}
+
 ## B-tree
 
 首先，基数统计的难点有：
@@ -22,19 +26,19 @@ comments = true
 
 2. 插入元素
 
-由于海量数据存储于磁盘，我们自然会考虑到B树。这里不细展开，只说优缺点。虽然B树查找、插入效率与内存占用上都很均衡，但是每一条记录实际都被完整存储，对于基数统计而言是没必要的；并且B树之间无法合并，对于网站场景，想统计两个页面访问用户数时，除非特意建立两个页面的B树，否则无法办到。
+由于海量数据存储于磁盘，我们自然会考虑到B树。这里不细展开，只说优缺点。虽然B树查找、插入效率与内存占用上都很均衡，但是每一条记录实际都被完整存储，对于基数统计而言是没必要的；并且B树之间无法**合并**，对于网站场景，想统计两个页面访问用户数时，除非特意建立两个页面的B树，否则无法办到。
 
 ## HashSet/Bitmap
 
-为了克服B树遇到的问题，我们自然想到将元数据内容转为数字，存储于数组中，也就是使用HashSet。更进一步，可以直接考虑使用Bitmap来统计。既可以快速查找、插入元素，也可以合并。
+为了克服B树遇到的问题，我们自然想到用HashSet减少存储的key值，更进一步将元数据内容转为数字作为index，将key也省略掉，也就是使用Bitmap来统计。既可以快速查找、插入元素，也可以合并。
 
 但是Bitmap有着天然的缺陷，它的长度预先设置，取决于数据的范围（也就是值域，domain）。假设我有10GB个数需要统计，那就需要分配10GB的Bitmap，就算这10GB的数全都是一个。
 
-> 这里补充一句，可以使用压缩位图来缓解这个问题，比如roaring-bitmap。
+> 这里补充一句，可以使用压缩位图来**缓解**这个问题，比如roaring-bitmap。
 
-## Linear Counting(LC)${}^{[1]}$
+## Linear Counting(LC)[^1]
 
-到这里我们可以发现，想要查找快、插入快、可以合并且内存占用低的数据结构恐怕人类还没掌握。不妨思考人类的超级手段：估计，我们可以试着利用概率去估计出基数。
+到这里我们可以发现，想要查找快、插入快、可以合并且内存占用低的数据结构恐怕人类还没掌握。不妨思考人类的常用手段：近似，我们可以试着利用概率去估计出基数。
 
 需要：
 
@@ -60,7 +64,7 @@ comments = true
 
 > 数学证明非常庞大复杂，请读者自行阅读论文，我就不班门弄斧了。
 
-## LogLog Counting(LLC)${}^{[2]}$
+## LogLog Counting(LLC)[^2]
 
 LC算法空间利用率仍然不高，是否可以进一步优化呢？这就是LLC。
 
@@ -69,11 +73,11 @@ LC算法空间利用率仍然不高，是否可以进一步优化呢？这就是
 思考两个问题：
 
 1. 进行$n$次过程A，每一次过程的总抛掷次数都不大于某个常数$k_{max}$的概率为？
-   
+
    易得$P_1(x\le{}k_{max})=[1-(\frac{1}{2})^{k_{max}}]^n$
 
 2. 进行n次过程A，至少有一次过程的总抛掷次数等于某个常数$k_{max}$的概率为？
-   
+
    易得$P_2(x=k_{max})=1 – P_1(x\le{}k_{max}–1)=1-[1-(\frac{1}{2})^{k_{max}-1}]^n$
 
 由于
@@ -113,7 +117,7 @@ LC算法空间利用率仍然不高，是否可以进一步优化呢？这就是
 
 > 本节介绍的LLC并不是无偏估计，更逻辑严密的推导过程详见论文。
 
-## HyperLogLog(HLL)${}^{[3]}$
+## HyperLogLog(HLL)[^3]
 
 HLL是LLC的改进，用**调和平均数**取代了**算术平均数**。
 
@@ -130,9 +134,9 @@ HLL的代码实践可以参考[stream-lib/HyperLogLog.java at master · addthis/
 
 ## 参考
 
-* [1] Whang, Kyu-Young et al. "A linear-time probabilistic counting algorithm for database applications." *ACM Trans. Database Syst.* 15 (1990): 208-229.
+[^1] Whang, Kyu-Young et al. "A linear-time probabilistic counting algorithm for database applications." *ACM Trans. Database Syst.* 15 (1990): 208-229.
 
-* [2] Marianne Durand, Philippe Flajolet. "Loglog Counting of Large Cardinalities (Extended Abstract)"
+[^2] Marianne Durand, Philippe Flajolet. "Loglog Counting of Large Cardinalities (Extended Abstract)"
 
-* [3] Philippe Flajolet and Éric Fusy and Olivier Gandouet and Frédéric Meunier. "HyperLogLog: the analysis of a near-optimal
+[^3] Philippe Flajolet and Éric Fusy and Olivier Gandouet and Frédéric Meunier. "HyperLogLog: the analysis of a near-optimal
   cardinality estimation algorithm"

@@ -4,7 +4,7 @@ description="最普通的布隆过滤器，涉及结构解释和数学推导"
 date=2022-02-09T17:13:10+08:00
 
 [taxonomies]
-categories = ["ProbabilisticDataStructure", "BloomFilter"]
+categories = ["ProbabilisticDataStructure"]
 tags = ["data structure"]
 
 [extra]
@@ -21,13 +21,11 @@ comments = true
 1. key**不**存在
 2. key**可能**存在（存在、纳伪）
 
-> 使用布隆过滤器原则：false positive影响可控。
-
 ### 历史
 
-布隆过滤器于1970年代被Burton Bloom创造，在查询集合成员存在与否时一般考虑时间成本或空间成本，论文提出第三个优化方向：Allowable Fraction of Errors，也就是说允许一定的误判，来大幅降低空间占用[1]。之后一段时间布隆过滤器被广泛运用在数据库领域。
+布隆过滤器于1970年代被Burton Bloom创造，在查询集合成员存在与否时一般考虑时间成本或空间成本，论文提出第三个优化方向：Allowable Fraction of Errors，也就是说允许一定的误判，来大幅降低空间占用[^1]。之后一段时间布隆过滤器被广泛运用在数据库领域。
 
-之后又有人提出利用布隆过滤器+共享缓存的方式大幅降低缓存服务器的带宽[2]，自此布隆过滤器在互联网中展现实力[3]。
+之后又有人提出利用布隆过滤器+共享缓存的方式大幅降低缓存服务器的带宽[^2]，自此布隆过滤器在互联网中展现实力[^3]。
 
 ### 原理
 
@@ -124,12 +122,13 @@ $n$由系统输入决定，$\varepsilon$则是开发者平衡内存使用和性�
 
 基础bloom filter有着自己的局限性，因此出现了许多变种，它们为了特殊场景作出不同的定制，增加一定开销换取更多功能：
 
-* 无法删除元素：计数布隆过滤器
-* 无法扩展：[可扩展布隆过滤器](/posts/bloom-filter-2/)
+* [可扩展布隆过滤器](/posts/bloom-filter-2/)：基础bloom filter必须预先知道元素数量以分配空间
+* 计数布隆过滤器：基础bloom filter无法删除元素，只能重建
+* [Count-Min Sketch](/posts/count-min-sketch/)：利用计数布隆过滤器相同变体实现各基数数量统计能力
 
 ## 参考
 
-- [1]: Space/Time Trade-offs in Hash Coding with Allowable Errors
-- [2]: Summary Cache: A Scalable Wide-Area Web Cache Sharing Protocol 
-- [3]: Network Applications of Bloom Filters: A Survey
-- [4]: Bloom Filters by Example. https://llimllib.github.io/bloomfilter-tutorial/
+[^1]: Space/Time Trade-offs in Hash Coding with Allowable Errors
+[^2]: Summary Cache: A Scalable Wide-Area Web Cache Sharing Protocol 
+[^3]: Network Applications of Bloom Filters: A Survey
+[^4]: Bloom Filters by Example. https://llimllib.github.io/bloomfilter-tutorial/
