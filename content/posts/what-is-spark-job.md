@@ -12,22 +12,22 @@ toc = true
 comments = true
 +++
 
-Well, terminology can always be difficult since it depends on context. In many cases, you can be used to "submit a job to a cluster", which for spark would be to submit a driver program.
+Well, terminology can always be difficult since it depends on context. In many cases, it can be used to "submit a job to a cluster", which for spark would be to submit a driver program.
 
-That said, Spark has his own definition for "job", directly from the glossary:
+That said, Spark has its own definition for "job", directly from the glossary:
 
 > Job A parallel computation consisting of multiple tasks that gets spawned in response to a Spark action (e.g. save, collect); you'll see this term used in the driver's logs.
 
 So I this context, let's say you need to do the following:
 
-1. Load a file with people names and addresses into RDD1
-2. Load a file with people names and phones into RDD2
-3. Join RDD1 and RDD2 by name, to get RDD3
-4. Map on RDD3 to get a nice HTML presentation card for each person as RDD4
-5. .Save RDD4 to file.
-6. Map RDD1 to extract zipcodes from the addresses to get RDD5
-7. Aggregate on RDD5 to get a count of how many people live on each zipcode as RDD6
-8. Collect RDD6 and prints these stats to the stdout.
+1. Load a file with people names and addresses into `RDD1`
+2. Load a file with people names and phones into `RDD2`
+3. Join `RDD1` and `RDD2` by name, to get `RDD3`
+4. Map on `RDD3` to get a nice HTML presentation card for each person as `RDD4`
+5. .Save `RDD4` to file.
+6. Map `RDD1` to extract zipcodes from the addresses to get RDD5
+7. Aggregate on `RDD5` to get a count of how many people live on each zipcode as `RDD6`
+8. Collect `RDD6` and prints these stats to the stdout.
 
 So,
 
